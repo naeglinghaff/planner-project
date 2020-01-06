@@ -117,23 +117,25 @@ var timeref; //empty varible
 var workEvent = function() {
 	workTime = true;
 	if (breakTime == true) {
+		breakTime = false;
 		clearInterval(breakEvent);
-	}
-	else
+	}	else {
 	timeref = 1500000;
 	countdown = [ timeref ];
 	countdown[1] = setInterval(tick, oneSecond, countdown);
+}
 };
 
 var breakEvent = function() {
-	breaTime = true;
+	breakTime = true;
 	if (workTime == true) {
+		workTime = false;
 		clearInterval(workEvent);
-	}
-	else
+	}	else {
 	timeref = 300000;
 	countdown = [ timeref];
 	countdown[1] = setInterval(tick, oneSecond, countdown);
+}
 };
 
 //functions for changing the image and updating the accompanying message
