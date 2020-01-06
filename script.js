@@ -5,6 +5,8 @@ var evening = 18; // 6PM
 var wakeupTime = 9; // 9AM
 var lunchTime = 12; // 12PM
 var napTime = lunchTime + 2; // 2PM
+var breakTime = false;
+var workTime = false;
 //measures of time
 var oneSecond = 1000;
 var oneMinute = 60000;
@@ -15,7 +17,7 @@ var wakeUpTimeSelector = document.getElementById("wakeUpTimeSelector");
 var lunchTimeSelector = document.getElementById("lunchTimeSelector");
 var napTimeSelector = document.getElementById("napTimeSelector");
 
-//Fetching the time
+//fetching the time
 var time = new Date().getHours();
 
 //updating the messages that appear and the images
@@ -23,14 +25,12 @@ var updateClock = function() {
 //Fetching image from html and setting holder image
 var image = "img/trees.jpg";
 var imageSelector = document.getElementById('image-slider');
-
 //Linking messages to HTML
 var messageText;
 var message = document.getElementById('timeEvent');
-
 if (time == breakTime) {
 			image = "img/waves.jpg";
-    	messageText = "Take 10";
+    	messageText = "Take 5";
 } 	else if (time == napTime) {
 			image = "img/catnap.jpg";
     	messageText = "It's time to take a nap...";
@@ -50,12 +50,11 @@ if (time == breakTime) {
     	messageText = "Good afternoon";
 			image = "img/trees.jpg";
 }
-
 //Puts message into HTML
 message.innerText= messageText;
 imageSelector.src = image;
 
-	showCurrentTime();
+showCurrentTime();
 };
 
 //Clock function
@@ -75,19 +74,19 @@ var meridian = "AM";
      meridian = "PM";
 	}
   if (hours > noon) {
-    hours = hours - 12;
+     hours = hours - 12;
 	}
 // Set Minutes
   if (minutes < 10) {
-      minutes = "0" + minutes;
+    	minutes = "0" + minutes;
 	}
 // Set Seconds
   if (seconds < 10) {
       seconds = "0" + seconds;
 	}
 // put together the string that displays the time
-	var clockTime = hours + ":" + minutes + ":" + seconds + " " + meridian;
-	clock.innerText = clockTime;
+var clockTime = hours + ":" + minutes + ":" + seconds + " " + meridian;
+clock.innerText = clockTime;
 };
 
 showCurrentTime();
@@ -116,12 +115,22 @@ var countdown; //empty variable
 var timeref; //empty varible
 
 var workEvent = function() {
+	workTime = true;
+	if (breakTime == true) {
+		clearInterval(breakEvent);
+	}
+	else
 	timeref = 1500000;
 	countdown = [ timeref ];
 	countdown[1] = setInterval(tick, oneSecond, countdown);
 };
 
 var breakEvent = function() {
+	breaTime = true;
+	if (workTime == true) {
+		clearInterval(workEvent);
+	}
+	else
 	timeref = 300000;
 	countdown = [ timeref];
 	countdown[1] = setInterval(tick, oneSecond, countdown);
