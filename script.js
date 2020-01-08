@@ -120,7 +120,7 @@ var workEvent = function() {
 	 if (workTime == true){
 		 	console.log(resetMessage);
 	 } else if (workTime == false) {
-			workTime = true;
+		 	workTime = true;
 			timeref = 1500000;
 			countdown = [ timeref ];
 			countdown[1] = setInterval(tick, oneSecond, countdown);
@@ -142,8 +142,10 @@ var breakEvent = function() {
 var workAndPlay = function() {
 	if (breakTime == false){
 		workTimeButton.addEventListener('click', workEvent);
+		breakTimeButton.removeEventListener('click', breakEvent);
 	} if (workTime == false){
 		breakTimeButton.addEventListener('click', breakEvent);
+		workTimeButton.removeEventListener('click', workEvent);
 	}
 };
 
