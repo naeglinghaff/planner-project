@@ -122,9 +122,10 @@ var workEvent = function() {
 	 } else if (workTime == false) {
 		 	workTime = true;
 			timeref = 1500000;
-			countdown = [ timeref ];
+			countdown = [timeref];
 			countdown[1] = setInterval(tick, oneSecond, countdown);
-		}
+			breakTimeButton.removeEventListener('click', breakEvent);
+	}
 };
 
 var breakEvent = function() {
@@ -133,23 +134,14 @@ var breakEvent = function() {
 	} else if (breakTime == false){
 			breakTime = true;
 			timeref = 300000;
-			countdown = [ timeref];
+			countdown = [timeref];
 			countdown[1] = setInterval(tick, oneSecond, countdown);
+			workTimeButton.removeEventListener('click', workEvent);
 	}
 };
 
-//function that stops the break or work time events from firing when the other is taking place
-var workAndPlay = function() {
-	if (breakTime == false){
-		workTimeButton.addEventListener('click', workEvent);
-		breakTimeButton.removeEventListener('click', breakEvent);
-	} if (workTime == false){
-		breakTimeButton.addEventListener('click', breakEvent);
-		workTimeButton.removeEventListener('click', workEvent);
-	}
-};
-
-workAndPlay();
+breakTimeButton.addEventListener('click', breakEvent);
+workTimeButton.addEventListener('click', workEvent);
 
 //functions for changing the image and updating the accompanying message
 var wakeupEvent = function() {
@@ -163,6 +155,7 @@ var lunchtimeEvent = function() {
 };
 
 //Button events
+
 wakeUpTimeSelector.addEventListener('change', wakeupEvent);
 napTimeSelector.addEventListener('change', naptimeEvent);
 lunchTimeSelector.addEventListener('change', lunchtimeEvent);
