@@ -142,10 +142,12 @@ var breakEvent = function() {
 };
 
 var reset = function(){
+	workTime = false;
+	breakTime = false;
 	clearInterval(countdown[1]);
-	worktime = false;
-	breaktTime = false;
 	workTimer.innerText = "00:00";
+	breakTimeButton.addEventListener('click', breakEvent);
+	workTimeButton.addEventListener('click', workEvent);
 };
 
 resetButton.addEventListener('click', reset);
