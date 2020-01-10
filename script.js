@@ -7,6 +7,7 @@ var lunchTime = 12; // 12PM
 var napTime = lunchTime + 2; // 2PM
 var breakTime = false;
 var workTime = false;
+var resetStatus = false;
 //measures of time
 var oneSecond = 1000;
 var oneMinute = 60000;
@@ -131,7 +132,7 @@ var workEvent = function() {
 var breakEvent = function() {
 	if (breakTime == true){
 		console.log(resetMessage);
-	} else if (breakTime == false){
+	}	else if (breakTime == false){
 			breakTime = true;
 			timeref = 300000;
 			countdown = [timeref];
@@ -140,6 +141,14 @@ var breakEvent = function() {
 	}
 };
 
+var reset = function(){
+	clearInterval(countdown[1]);
+	worktime = false;
+	breaktTime = false;
+	workTimer.innerText = "00:00";
+};
+
+resetButton.addEventListener('click', reset);
 breakTimeButton.addEventListener('click', breakEvent);
 workTimeButton.addEventListener('click', workEvent);
 
