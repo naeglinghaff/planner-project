@@ -6,37 +6,31 @@ body {
   padding: 0px;
   text-transform: uppercase;
 }
-
 .page {
   width: 80%;
   margin: 30px auto;
   background-color: #4169E1;
   border-radius: 5px;
 }
-
 header {
   font-size: 24px;
   line-height: 48px;
   text-align: center;
 }
-
 h4 {
   font-size: 21px;
   font-family: 'Bungee', cursive;
   text-align: center;
 }
-
 h4 #clock {
   font-size: 36px;
   display: block;
   padding: 5px 0px;
   text-align: center;
 }
-
 h1, h2, h3, h6 {
   font-family: 'Bungee Shade', cursive;
 }
-
 blockquote {
     font: 2em/1em 'Open Sans', sans-serif;
     -webkit-text-stroke: 1px black;
@@ -45,64 +39,54 @@ blockquote {
     color: #fff;
     text-align: center;
 }
-
 blockquote:before { content: '"'; }
 blockquote:after { content: '"'; }
 
 #top-section {
   align-items: center;
 }
-
 #image-slider {
   margin: 0 auto;
   -webkit-border-radius: 50px;
   -moz-border-radius: 50px;
   display: block;
-  width: 70%;
-  height: 70%;
+  width: 50%;
+  height: 50%;
 }
-
 #selectors {
-  float:left;
+  float: left;
   display: inline-block;
   width: 450px;
-  padding: 30px
 }
-
-#breakTimer {
+#workTimer {
 font-size: 36px;
 padding: 5px 0px;
 margin: 10px 10px 10px 10px;
 align-items: center;
 }
-
 #planner h4 {
-  text-align: left;
+  text-align: center;
 }
-
 #planner {
-  display: block;
+  display: inline;
 }
-
+#pomodoro-timer {
+  width: 500px;
+  display: inline-block;
+}
 #wakeUpTimeSelector, #lunchTimeSelector, #napTimeSelector {
   padding: 10px 0;
   text-align: left;
 }
-
-#partyTimeButton {
+button {
   background-color: #222;
-  width: 300px;
+  width: 200px;
   font-family: 'Bungee', cursive;
   font-size: 18px;
   color: #fff;
   border: none;
-  border-radius: 5px;
+  border-radius: 10px;
   padding: 10px 0;
   margin-top: 20px;
   margin-bottom: 20px;
-}
-
-footer p {
-  text-transform: uppercase;
-  font-size: 12px;
 }

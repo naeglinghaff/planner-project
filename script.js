@@ -145,7 +145,7 @@ var reset = function(){
 	workTime = false;
 	breakTime = false;
 	clearInterval(countdown[1]);
-	workTimer.innerText = "00:00";
+	workTimer.innerText = "";
 	breakTimeButton.addEventListener('click', breakEvent);
 	workTimeButton.addEventListener('click', workEvent);
 };
