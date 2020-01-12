@@ -150,10 +150,6 @@ var reset = function(){
 	workTimeButton.addEventListener('click', workEvent);
 };
 
-resetButton.addEventListener('click', reset);
-breakTimeButton.addEventListener('click', breakEvent);
-workTimeButton.addEventListener('click', workEvent);
-
 //functions for changing the image and updating the accompanying message
 var wakeupEvent = function() {
 	wakeupTime = wakeUpTimeSelector.value;
@@ -166,7 +162,9 @@ var lunchtimeEvent = function() {
 };
 
 //Button events
-
 wakeUpTimeSelector.addEventListener('change', wakeupEvent);
 napTimeSelector.addEventListener('change', naptimeEvent);
 lunchTimeSelector.addEventListener('change', lunchtimeEvent);
+resetButton.addEventListener('click', reset);
+breakTimeButton.addEventListener('click', breakEvent);
+workTimeButton.addEventListener('click', workEvent);
