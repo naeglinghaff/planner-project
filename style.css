@@ -32,12 +32,12 @@ h1, h2, h3, h6 {
   font-family: 'Bungee Shade', cursive;
 }
 blockquote {
-    color: #fff;
-    font: 2em/1em 'Open Sans', sans-serif;
-    -webkit-text-stroke: 1px black;
-    text-shadow: 2px 2px #000;
-    margin: -50px 0 80px 0;
-    text-align: center;
+  color: #fff;
+  font: 2em/1em 'Open Sans', sans-serif;
+  -webkit-text-stroke: 1px black;
+  text-shadow: 2px 2px #000;
+  margin: -50px 0 45px 0;
+  text-align: center;
 }
 blockquote:before { content: '"'; }
 blockquote:after { content: '"'; }
@@ -54,7 +54,9 @@ blockquote:after { content: '"'; }
   width: 50%;
 }
 #selectors {
+  display: inline-block;
   width: 400px;
+  height: 220px;
 }
 #workTimer {
 font-size: 36px;
@@ -65,6 +67,7 @@ align-items: center;
 #digiclock{
   display: flex;
   justify-content: center;
+  height: 65px;
 }
 #planner {
   display: flex;
@@ -73,7 +76,8 @@ align-items: center;
 }
 #pomodoro-timer {
   display: inline-block;
-  align-items: center;
+  justify-content: center;
+  height: 220px;
 }
 #worktimer {
   padding: 20px;
