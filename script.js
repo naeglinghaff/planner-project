@@ -11,8 +11,9 @@ var resetStatus = false;
 //measures of time
 var oneSecond = 1000;
 var oneMinute = 60000;
-//message for timer Reset
+//message for restarting the timeref
 var resetMessage = "Reset the timer to start again";
+
 
 //Links to the button and the selectors
 var button = document.getElementById("partyTimeButton");
@@ -113,13 +114,13 @@ var tick = function(timeref) {
 	timeref[0] -= 1000;
 };
 
-//variables used in the tick function that counts down the timer
+//variables used in the tick function and in the timing events
 var countdown; //empty variable
 var timeref; //empty varible
 
 var workEvent = function() {
 	 if (workTime == true){
-		 	console.log(resetMessage);
+		 	timerMessage.innerText = resetMessage;
 	 } else if (workTime == false) {
 		 	workTime = true;
 			timeref = 1500000;
@@ -131,7 +132,7 @@ var workEvent = function() {
 
 var breakEvent = function() {
 	if (breakTime == true){
-		console.log(resetMessage);
+			timerMessage.innerText = resetMessage;
 	}	else if (breakTime == false){
 			breakTime = true;
 			timeref = 300000;
@@ -146,6 +147,7 @@ var reset = function(){
 	breakTime = false;
 	clearInterval(countdown[1]);
 	workTimer.innerText = "";
+	timerMessage.innerText = "";
 	breakTimeButton.addEventListener('click', breakEvent);
 	workTimeButton.addEventListener('click', workEvent);
 };

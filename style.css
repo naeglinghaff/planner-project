@@ -36,7 +36,7 @@ blockquote {
   font: 2em/1em 'Open Sans', sans-serif;
   -webkit-text-stroke: 1px black;
   text-shadow: 2px 2px #000;
-  margin: -50px 0 45px 0;
+  margin: -50px 0 35px 0;
   text-align: center;
 }
 blockquote:before { content: '"'; }
@@ -64,12 +64,12 @@ padding: 5px 0px;
 margin: 10px 10px 10px 10px;
 align-items: center;
 }
-#digiclock{
+#digiclock {
   display: flex;
   justify-content: center;
   height: 65px;
 }
-#planner {
+#planner, #timerWrap {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -79,9 +79,13 @@ align-items: center;
   justify-content: center;
   height: 220px;
 }
-#worktimer {
+#worktimer  {
   padding: 20px;
   margin: 10px 10px 10px 10px;
+}
+#timerMessage {
+  padding: 5px;
+  margin: 5px 5px 5px 5px;
 }
 #wakeUpTimeSelector, #lunchTimeSelector, #napTimeSelector {
   height: 30px;
