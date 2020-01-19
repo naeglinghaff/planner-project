@@ -1,19 +1,17 @@
 //Timing for messages
 var noon = 12;
 var evening = 18; // 6PM
-//timed events
+//page events
 var wakeupTime = 9; // 9AM
 var lunchTime = 12; // 12PM
 var napTime = lunchTime + 2; // 2PM
 var breakTime = false;
 var workTime = false;
-var resetStatus = false;
 //measures of time
 var oneSecond = 1000;
 var oneMinute = 60000;
-//message for restarting the timeref
+//message for restarting the time reference
 var resetMessage = "Reset the timer to start again";
-
 
 //Links to the button and the selectors
 var button = document.getElementById("partyTimeButton");
@@ -57,22 +55,18 @@ if (time == breakTime) {
 //Puts message into HTML
 message.innerText= messageText;
 imageSelector.src = image;
-
 showCurrentTime();
 };
 
 //Clock function
 var showCurrentTime = function() {
 // display the string on the webpage
-var clock = document.getElementById('clock');
-
-var currentTime = new Date();
-
-var hours = currentTime.getHours();
-var minutes = currentTime.getMinutes();
-var seconds = currentTime.getSeconds();
-var meridian = "AM";
-
+	var clock = document.getElementById('clock');
+	var currentTime = new Date();
+	var hours = currentTime.getHours();
+	var minutes = currentTime.getMinutes();
+	var seconds = currentTime.getSeconds();
+	var meridian = "AM";
 // Set hours
 	if (hours >= noon) {
      meridian = "PM";
@@ -97,13 +91,20 @@ showCurrentTime();
 updateClock();
 setInterval(updateClock, oneSecond);
 
+//functions for changing the image and updating the accompanying message
+var wakeupEvent = function() {
+	wakeupTime = wakeUpTimeSelector.value;
+};
+var naptimeEvent = function() {
+	napTime = napTimeSelector.value;
+};
+var lunchtimeEvent = function() {
+	lunchTime = lunchTimeSelector.value;
+};
+
 //countdown function that decrements a timer
 var tick = function(timeref) {
-
   var timeleft = timeref[0]; //position 0 in array
-  if ( timeleft <= 0 ) {
-    clearInterval(timeref[1]);
-  }
 	var tminutes = parseInt(timeref[0] / oneMinute, 10);
 	var tseconds = parseInt(timeref[0] % oneMinute);
 	tminutes = tminutes < 10 ? "0" + tminutes : tminutes;
@@ -111,6 +112,10 @@ var tick = function(timeref) {
 	tseconds = tseconds < 10 ? "0" + tseconds : tseconds;
 	var displaytime = tminutes + ":" + tseconds;
 	document.getElementById("workTimer").innerText = displaytime;
+	if ( timeleft <= 0 ) {
+		clearInterval(timeref[1]);
+		setTimeout(function(){alert("Time is up!");}, 100);
+	}
 	timeref[0] -= 1000;
 };
 
@@ -135,14 +140,14 @@ var breakEvent = function() {
 			timerMessage.innerText = resetMessage;
 	}	else if (breakTime == false){
 			breakTime = true;
-			timeref = 300000;
+			timeref = 10000;
 			countdown = [timeref];
 			countdown[1] = setInterval(tick, oneSecond, countdown);
 			workTimeButton.removeEventListener('click', workEvent);
 	}
 };
 
-var reset = function(){
+var reset = function() {
 	workTime = false;
 	breakTime = false;
 	clearInterval(countdown[1]);
@@ -152,16 +157,6 @@ var reset = function(){
 	workTimeButton.addEventListener('click', workEvent);
 };
 
-//functions for changing the image and updating the accompanying message
-var wakeupEvent = function() {
-	wakeupTime = wakeUpTimeSelector.value;
-};
-var naptimeEvent = function() {
-	napTime = napTimeSelector.value;
-};
-var lunchtimeEvent = function() {
-	lunchTime = lunchTimeSelector.value;
-};
 
 //Button events
 wakeUpTimeSelector.addEventListener('change', wakeupEvent);
